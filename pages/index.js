@@ -2,8 +2,28 @@ import Head from 'next/head'
 import Image from 'next/image'
 import Link from 'next/link'
 import styles from '../styles/Home.module.css'
+import getAirtableData from '../utils/get-airtable-data'
 
-export default function Home() {
+export async function getStaticProps() {
+  const allSituations = await getAirtableData();
+  const allSituationsString = JSON.stringify(allSituations, null, 4)
+  const theSituations = allSituations.map(e=>{
+    return {
+      id: e.id,
+      linkText: e.fields.Title,
+      slug: `/situations/${e.id}`,
+    }
+  })
+  return {
+    props: {
+      situations: theSituations, 
+      allSituationsString
+    },
+  };
+}
+
+export default function Home({ allSituationsString, situations }) {
+
   return (
     <div className={styles.container}>
       <Head>
@@ -21,6 +41,25 @@ export default function Home() {
             <a>play</a>
           </Link>
         </h2>
+        <div>
+          <ul>
+          {situations.map(e=>{
+            return(
+              <li><Link href={e.slug}><a>{e.linkText}</a></Link></li>
+            )
+          })}
+          </ul>
+        </div>
+        <div style={{
+          width: "500px",
+          margin: "auto"
+        }}><pre>{JSON.stringify(situations, null, 4)}</pre></div>
+        <div style={{
+          width: "500px",
+          margin: "auto"
+        }}>
+          <pre>{allSituationsString}</pre>
+          </div>
         
       </main>
 
