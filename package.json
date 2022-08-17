@@ -12,7 +12,8 @@
     "airtable": "^0.11.4",
     "next": "12.2.3",
     "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "react-dom": "18.2.0",
+    "react-draggable": "^4.4.5"
   },
   "devDependencies": {
     "eslint": "8.21.0",

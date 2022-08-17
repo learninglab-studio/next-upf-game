@@ -37,11 +37,11 @@ export default function Home({ allSituationsString, situations }) {
           Harvard Life: The Game
         </h1>
         <h2 className="title">
-          <Link href="/situations/one">
+          <Link href="/situations/reciUCPEElGLrOZ7s">
             <a>play</a>
           </Link>
         </h2>
-        <div>
+        {/* <div>
           <ul>
           {situations.map(e=>{
             return(
@@ -59,7 +59,7 @@ export default function Home({ allSituationsString, situations }) {
           margin: "auto"
         }}>
           <pre>{allSituationsString}</pre>
-          </div>
+          </div> */}
         
       </main>
 
