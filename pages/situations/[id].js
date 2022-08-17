@@ -25,10 +25,10 @@ export default function Situation({ situationData }) {
             {situationData.fields.ChoicesButtonText.map((e, i)=>{
               return(
                 <Link href={`/situations/${situationData.fields.ChoicesLeadsToSituation[i]}`} key={i}>
-                  <Draggable><a className={styles.card}>
+                  <a className={styles.card}>
                 <h3>{e} &rarr;</h3>
                 <p>{situationData.fields.ChoicesAvailable_Text[i]}</p>
-            </a></Draggable>
+            </a>
                   
                 </Link>
               )
