@@ -24,7 +24,7 @@ export default function Situation({ situationData }) {
           <div className={styles.grid}>
             {situationData.fields.ChoicesButtonText.map((e, i)=>{
               return(
-                <Link href={`/situations/${situationData.fields.ChoicesLeadsToSituation[i]}`}>
+                <Link href={`/situations/${situationData.fields.ChoicesLeadsToSituation[i]}`} key={i}>
                   <Draggable><a className={styles.card}>
                 <h3>{e} &rarr;</h3>
                 <p>{situationData.fields.ChoicesAvailable_Text[i]}</p>
@@ -55,6 +55,7 @@ export async function getStaticProps({ params }) {
         props: {
           situationData,
         },
+        revalidate: 10
     };
 }
 
